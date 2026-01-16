@@ -13,16 +13,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin(origins = "http://localhost:8100")
+@CrossOrigin(origins = "https://critreel.netlify.app")
 @RestController
 @RequestMapping("/api/v1/upload") // http://localhost:8080/api/v1/upload
 public class UploadController {
 
     // Diretório onde as imagens serão salvas
-    private static final String UPLOAD_DIR = "C:\\Users\\Usuario\\OneDrive\\Documentos\\PP\\Desenvolvimento\\Imagens\\";
+    private static final String UPLOAD_DIR = "/app/uploads/";
 
     // URL base para acesso às imagens - ajuste conforme seu servidor
-    private static final String BASE_URL = "http://localhost:8080/imagens/";
+    private static final String BASE_URL = "https://critreel-api-production.up.railway.app/imagens/";
 
     // Objeto para resposta da API
     public static class ArquivoResponse {
@@ -96,3 +96,4 @@ public class UploadController {
         }
     }
 }
+
