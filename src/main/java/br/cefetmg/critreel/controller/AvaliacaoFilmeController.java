@@ -17,7 +17,7 @@ import org.springframework.web.server.ResponseStatusException;
 import br.cefetmg.critreel.model.AvaliacaoFilme;
 import br.cefetmg.critreel.repository.AvaliacaoFilmeRepository;
 
-@CrossOrigin(origins = "http://localhost:8100")
+@CrossOrigin(origins = "https://critreel.netlify.app")
 @RestController
 @RequestMapping("/api/v1/avaliacaofilme") // http://localhost:8080/api/v1/avaliacaofilme
 public class AvaliacaoFilmeController {
@@ -92,3 +92,4 @@ public class AvaliacaoFilmeController {
 		return ResponseEntity.ok().build();
 	}
 }
+
