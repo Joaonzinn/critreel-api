@@ -18,7 +18,7 @@ import br.cefetmg.critreel.model.Seguidor;
 import br.cefetmg.critreel.model.Usuario;
 import br.cefetmg.critreel.repository.SeguidorRepository;
 
-@CrossOrigin(origins = "http://localhost:8100")
+@CrossOrigin(origins = "https://critreel.netlify.app")
 @RestController
 @RequestMapping("/api/v1/seguidores") // http://localhost:8080/api/v1/seguidores
 public class SeguidorController {
@@ -105,3 +105,4 @@ public class SeguidorController {
         return ResponseEntity.ok().body(qtd);
     }
 }
+
