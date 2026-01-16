@@ -18,10 +18,11 @@ public class WebConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 // Substitua pela URL exata do seu site no Netlify
-                .allowedOrigins("https://critreel.netlify.app/index") 
+                .allowedOrigins("https://critreel.netlify.app") 
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true);
     }
 }
+
 
