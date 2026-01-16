@@ -11,7 +11,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/imagens/**")
-                .addResourceLocations("file:C:/Users/Usuario/OneDrive/Documentos/PP/Desenvolvimento/Imagens/");
+                .addResourceLocations("file:/app/uploads/");
     }
 
     @Override

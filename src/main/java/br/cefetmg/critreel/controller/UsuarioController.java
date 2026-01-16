@@ -12,7 +12,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "https://critreel.netlify.app")
 @RestController
-@RequestMapping("/api/usuario") // http://localhost:8080/api/usuario
+@RequestMapping("/api/v1/usuario") // http://localhost:8080/api/v1/usuario
 public class UsuarioController {
 
     private final UsuarioRepository usuarioRepository;
