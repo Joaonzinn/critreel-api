@@ -10,7 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:8100")
+@CrossOrigin(origins = "https://critreel.netlify.app")
 @RestController
 @RequestMapping("/api/v1/favoritos") // http://localhost:8080/api/v1/favoritos
 public class FavoritoController {
@@ -62,3 +62,4 @@ public class FavoritoController {
         return ResponseEntity.ok().body(filmesFavoritos);
     }
 }
+
