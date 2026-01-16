@@ -5,22 +5,9 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Table `usuario`
 -- -----------------------------------------------------
--- -----------------------------------------------------
--- Schema bdcritreel
--- -----------------------------------------------------
-
--- -----------------------------------------------------
--- Schema bdcritreel
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `bdcritreel` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
-USE `bdcritreel` ;
-
--- -----------------------------------------------------
--- Table `bdcritreel`.`usuario`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bdcritreel`.`usuario` (
+CREATE TABLE IF NOT EXISTS `usuario` (
   `idUsuario` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(45) NOT NULL,
   `senha` VARCHAR(45) NOT NULL,
@@ -40,9 +27,9 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `bdcritreel`.`filme`
+-- Table `filme`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bdcritreel`.`filme` (
+CREATE TABLE IF NOT EXISTS `filme` (
   `idFilme` INT NOT NULL AUTO_INCREMENT,
   `titulo` VARCHAR(100) NOT NULL,
   `sinopse` VARCHAR(1000) NOT NULL,
@@ -55,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `bdcritreel`.`filme` (
   INDEX `fk_Filme_Usuario1_idx` (`idUsuario` ASC) VISIBLE,
   CONSTRAINT `fk_Filme_Usuario1`
     FOREIGN KEY (`idUsuario`)
-    REFERENCES `bdcritreel`.`usuario` (`idUsuario`)
+    REFERENCES `usuario` (`idUsuario`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB
@@ -65,9 +52,9 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `bdcritreel`.`avaliacaofilme`
+-- Table `avaliacaofilme`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bdcritreel`.`avaliacaofilme` (
+CREATE TABLE IF NOT EXISTS `avaliacaofilme` (
   `nota` INT NOT NULL,
   `idFilme` INT NOT NULL,
   `idUsuario` INT NOT NULL,
@@ -75,12 +62,12 @@ CREATE TABLE IF NOT EXISTS `bdcritreel`.`avaliacaofilme` (
   INDEX `fk_AvaliacaoFilme_Usuario1` (`idUsuario` ASC) VISIBLE,
   CONSTRAINT `fk_AvaliacaoFilme_Filme1`
     FOREIGN KEY (`idFilme`)
-    REFERENCES `bdcritreel`.`filme` (`idFilme`)
+    REFERENCES `filme` (`idFilme`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_AvaliacaoFilme_Usuario1`
     FOREIGN KEY (`idUsuario`)
-    REFERENCES `bdcritreel`.`usuario` (`idUsuario`)
+    REFERENCES `usuario` (`idUsuario`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB
@@ -89,9 +76,9 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `bdcritreel`.`critica`
+-- Table `critica`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bdcritreel`.`critica` (
+CREATE TABLE IF NOT EXISTS `critica` (
   `idCritica` INT NOT NULL AUTO_INCREMENT,
   `tituloFilme` VARCHAR(100) NULL DEFAULT NULL,
   `texto` VARCHAR(300) NOT NULL,
@@ -104,12 +91,12 @@ CREATE TABLE IF NOT EXISTS `bdcritreel`.`critica` (
   INDEX `fk_Critica_Filme1_idx` (`idFilme` ASC) VISIBLE,
   CONSTRAINT `fk_Critica_Filme1`
     FOREIGN KEY (`idFilme`)
-    REFERENCES `bdcritreel`.`filme` (`idFilme`)
+    REFERENCES `filme` (`idFilme`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_Critica_Usuario1`
     FOREIGN KEY (`idUsuario`)
-    REFERENCES `bdcritreel`.`usuario` (`idUsuario`)
+    REFERENCES `usuario` (`idUsuario`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB
@@ -119,9 +106,9 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `bdcritreel`.`curtidacritica`
+-- Table `curtidacritica`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bdcritreel`.`curtidacritica` (
+CREATE TABLE IF NOT EXISTS `curtidacritica` (
   `idUsuario` INT NOT NULL,
   `idCritica` INT NOT NULL,
   PRIMARY KEY (`idUsuario`, `idCritica`),
@@ -129,12 +116,12 @@ CREATE TABLE IF NOT EXISTS `bdcritreel`.`curtidacritica` (
   INDEX `fk_CurtidaCritica_Critica1_idx` (`idCritica` ASC) VISIBLE,
   CONSTRAINT `fk_CurtidaCritica_Critica1`
     FOREIGN KEY (`idCritica`)
-    REFERENCES `bdcritreel`.`critica` (`idCritica`)
+    REFERENCES `critica` (`idCritica`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_CurtidaCritica_Usuario1`
     FOREIGN KEY (`idUsuario`)
-    REFERENCES `bdcritreel`.`usuario` (`idUsuario`)
+    REFERENCES `usuario` (`idUsuario`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB
@@ -143,9 +130,9 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `bdcritreel`.`filmesfavoritos`
+-- Table `filmesfavoritos`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bdcritreel`.`filmesfavoritos` (
+CREATE TABLE IF NOT EXISTS `filmesfavoritos` (
   `idUsuario` INT NOT NULL,
   `idFilme` INT NOT NULL,
   PRIMARY KEY (`idUsuario`, `idFilme`),
@@ -153,12 +140,12 @@ CREATE TABLE IF NOT EXISTS `bdcritreel`.`filmesfavoritos` (
   INDEX `fk_FilmesFavoritos_Filme1_idx` (`idFilme` ASC) VISIBLE,
   CONSTRAINT `fk_FilmesFavoritos_Filme1`
     FOREIGN KEY (`idFilme`)
-    REFERENCES `bdcritreel`.`filme` (`idFilme`)
+    REFERENCES `filme` (`idFilme`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_FilmesFavoritos_Usuario1`
     FOREIGN KEY (`idUsuario`)
-    REFERENCES `bdcritreel`.`usuario` (`idUsuario`)
+    REFERENCES `usuario` (`idUsuario`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB
@@ -167,9 +154,9 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `bdcritreel`.`imagemfilme`
+-- Table `imagemfilme`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bdcritreel`.`imagemfilme` (
+CREATE TABLE IF NOT EXISTS `imagemfilme` (
   `idImagemFilme` INT NOT NULL AUTO_INCREMENT,
   `caminho` LONGTEXT NOT NULL,
   `idFilme` INT NOT NULL,
@@ -178,7 +165,7 @@ CREATE TABLE IF NOT EXISTS `bdcritreel`.`imagemfilme` (
   INDEX `fk_ImagemFilme_Filme1_idx` (`idFilme` ASC) VISIBLE,
   CONSTRAINT `fk_ImagemFilme_Filme1`
     FOREIGN KEY (`idFilme`)
-    REFERENCES `bdcritreel`.`filme` (`idFilme`)
+    REFERENCES `filme` (`idFilme`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB
@@ -188,9 +175,9 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `bdcritreel`.`seguidores`
+-- Table `seguidores`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bdcritreel`.`seguidores` (
+CREATE TABLE IF NOT EXISTS `seguidores` (
   `idSeguidor` INT NOT NULL,
   `idSeguido` INT NOT NULL,
   PRIMARY KEY (`idSeguidor`, `idSeguido`),
@@ -198,12 +185,12 @@ CREATE TABLE IF NOT EXISTS `bdcritreel`.`seguidores` (
   INDEX `fk_Usuario_has_Usuario_Usuario1_idx` (`idSeguidor` ASC) VISIBLE,
   CONSTRAINT `fk_Usuario_has_Usuario_Usuario1`
     FOREIGN KEY (`idSeguidor`)
-    REFERENCES `bdcritreel`.`usuario` (`idUsuario`)
+    REFERENCES `usuario` (`idUsuario`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_Usuario_has_Usuario_Usuario2`
     FOREIGN KEY (`idSeguido`)
-    REFERENCES `bdcritreel`.`usuario` (`idUsuario`)
+    REFERENCES `usuario` (`idUsuario`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB
@@ -214,4 +201,3 @@ COLLATE = utf8mb4_0900_ai_ci;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
