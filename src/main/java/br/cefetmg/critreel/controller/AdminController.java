@@ -11,7 +11,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.HashMap;
 import java.util.Map;
 
-@CrossOrigin // CORS global já cobre, mas deixamos aberto
+@CrossOrigin(origins = "https://critreel.netlify.app")
 @RestController
 @RequestMapping("/api/admin")
 public class AdminController {
@@ -41,3 +41,4 @@ public class AdminController {
         return ResponseEntity.ok(body);
     }
 }
+
