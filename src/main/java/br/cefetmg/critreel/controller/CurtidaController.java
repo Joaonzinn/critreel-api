@@ -17,7 +17,7 @@ import br.cefetmg.critreel.model.Curtida;
 import br.cefetmg.critreel.model.Usuario;
 import br.cefetmg.critreel.repository.CurtidaRepository;
 
-@CrossOrigin(origins = "http://localhost:8100")
+@CrossOrigin(origins = "https://critreel.netlify.app")
 @RestController
 @RequestMapping("/api/v1/curtidas") // http://localhost:8080/api/v1/curtidas
 public class CurtidaController {
@@ -75,3 +75,4 @@ public class CurtidaController {
         return ResponseEntity.ok().body(usuarios);
     }
 }
+
