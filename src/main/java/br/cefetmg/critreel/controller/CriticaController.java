@@ -10,7 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:8100")
+@CrossOrigin(origins = "https://critreel.netlify.app")
 @RestController
 @RequestMapping("/api/v1/critica") // http://localhost:8080/api/v1/critica
 public class CriticaController {
@@ -122,3 +122,4 @@ public class CriticaController {
         return ResponseEntity.ok().body(critica);
     }
 }
+
