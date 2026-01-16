@@ -10,7 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:8100")
+@CrossOrigin(origins = "https://critreel.netlify.app")
 @RestController
 @RequestMapping("/api/v1/imagem-filme") // http://localhost:8080/api/v1/imagem-filme
 public class ImagemFilmeController {
@@ -90,3 +90,4 @@ public class ImagemFilmeController {
         return ResponseEntity.ok().body(imagem);
     }
 }
+
