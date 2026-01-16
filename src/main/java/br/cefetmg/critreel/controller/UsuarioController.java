@@ -10,7 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:8100")
+@CrossOrigin(origins = "https://critreel.netlify.app")
 @RestController
 @RequestMapping("/api/usuario") // http://localhost:8080/api/usuario
 public class UsuarioController {
@@ -98,4 +98,5 @@ public class UsuarioController {
 
         return ResponseEntity.ok().body(usuario);
     }
+
 }
